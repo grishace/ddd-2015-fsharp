@@ -64,10 +64,12 @@ June 5, 2015</small>
 
 ### Functional programming
 
-- Lambda calculus (1930's)</li>
+- Lambda calculus (1930's)
 - Math theory of functions and their evaluation
-- $ \Pr(A|B)=\frac{\Pr(B|A)\Pr(A)}{\Pr(B|A)\Pr(A)+\Pr(B|\neg A)\Pr(\neg A)} $
 - Basis of almost all functional programming languages today
+- $ f(x) = x^{2} + 2 \;\; \rightarrow \;\; \lambda x.x^{2} + 2 $
+
+' expressing computation by way of variable binding and substitution
 
 ---
 
@@ -82,6 +84,7 @@ June 5, 2015</small>
 
 ' ML - first-class functions (explain), automatic memory management through garbage collection, type inference, pattern matching, and exception handling
 ' Erlang - Ericsson, network hardware, actors concurrency
+' Haskell - math putity
 ' Scala - JVM, "better Java"
 ' F# .NET, part of VS2010, Current version 3.1 (2014), 4.0 this year
 
@@ -122,7 +125,7 @@ June 5, 2015</small>
 
 - Float, signed int
 - Compile-time checking
-- Length, volume, mass, and so on <span class="fragment">... temperature?</span>
+- Length, volume, mass, and so on... <span class="fragment"> temperature?</span>
 
 ***
 
