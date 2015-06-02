@@ -2,7 +2,7 @@
 - title : Introduction to F# 
 - description : Introduction to FsReveal
 - author : Grigoriy Belenkiy
-- theme : Simple
+- theme : simple
 - transition : convex
 
 ***
@@ -129,7 +129,7 @@ June 5, 2015</small>
 
 ***
 
-### Sequnce generators
+### Sequence generators
 
 ***
 
