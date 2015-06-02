@@ -1,6 +1,7 @@
 ﻿open System
 
-let fizz n =
+let fizz (ns:int * string) =
+  let n = fst ns
   if n % 3 = 0 
     then (n, "Fizz")
     else (n, sprintf "%d" n)
@@ -14,11 +15,12 @@ let buzz ns =
       then (n, "Buzz") 
       else ns
 
+let fizzbuzz' = fizz >> buzz >> snd
+
 let fizzbuzz =
   {1 .. 100} 
-  |> Seq.map fizz 
-  |> Seq.map buzz 
-  |> Seq.map snd
+  |> Seq.map (fun x -> (x, sprintf "%d" x))
+  |> Seq.map fizzbuzz'
 
 [<EntryPoint>]
 let main argv = 
