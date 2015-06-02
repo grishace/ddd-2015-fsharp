@@ -1,9 +1,16 @@
 ﻿(**
 - title : Introduction to F# 
-- description : Introduction to FsReveal
+- description : Introduction to F#. Denver Dev Day (June 5, 2015)
 - author : Grigoriy Belenkiy
 - theme : simple
 - transition : convex
+
+***
+
+- data-background : images/sponsors.png
+- data-background-transition : none
+
+' Sponsors slide (required by organizators)
 
 ***
 
