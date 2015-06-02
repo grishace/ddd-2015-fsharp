@@ -1,4 +1,5 @@
 ﻿(**
+
 - title : Introduction to F# 
 - description : Introduction to F#. Denver Dev Day (June 5, 2015)
 - author : Grigoriy Belenkiy
@@ -120,6 +121,10 @@ June 5, 2015</small>
 
 ***
 
+### FizzBuzz (revisited)
+
+***
+
 ### Metric mishap caused loss of NASA orbiter
 
 >(CNN) -- NASA lost a $125 million Mars orbiter because a Lockheed Martin engineering team used English units of measurement while the agency's team used the more conventional metric system for a key spacecraft operation, according to a review finding released Thursday.
@@ -136,17 +141,15 @@ June 5, 2015</small>
 
 ***
 
-### Sequence generators
+### Type providers
+
+- CSV
+- SQL
+- OData
 
 ***
 
 ### Async
-
-***
-
-### Type providers
-
-- CSV, SQL, OData
 
 ***
 
@@ -161,9 +164,19 @@ June 5, 2015</small>
 
 #### On-line
 
+- F# Foundation
+- F# For Fun And Profit
+- Try F#
+- F# Cheatsheet
+
 ---
 
 #### Books
+
+- Real-World Functional Programming With C# and F#
+- F# Deep Dive
+- The Book of F#
+- Web F# (link from Delmer)
 
 ***
 
