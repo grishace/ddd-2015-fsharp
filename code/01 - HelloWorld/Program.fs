@@ -12,3 +12,7 @@ let main argv =
   Console.ReadLine() |> ignore
   // return value, i.e. exit code
   0
+
+// Try:
+// printfn "Hello %s" "World"
+// printfn "Hello %s" 1
