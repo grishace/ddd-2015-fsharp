@@ -1,6 +1,4 @@
-﻿open System
-
-let fizz (ns:int * string) =
+﻿let fizz (ns:int * string) =
   let n = fst ns
   if n % 3 = 0 
     then (n, "Fizz")
