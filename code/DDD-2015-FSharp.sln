@@ -11,6 +11,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "03 - Factorial", "03 - Fact
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "04 - FizzBuzz (revisited)", "04 - FizzBuzz (revisited)\04 - FizzBuzz (revisited).fsproj", "{2665D742-73C0-4EE9-9FFF-12F2ADE9B5E2}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "05 - Units of Measure", "05 - Units of Measure\05 - Units of Measure.fsproj", "{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2665D742-73C0-4EE9-9FFF-12F2ADE9B5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2665D742-73C0-4EE9-9FFF-12F2ADE9B5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2665D742-73C0-4EE9-9FFF-12F2ADE9B5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

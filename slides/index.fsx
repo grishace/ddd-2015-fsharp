@@ -133,7 +133,7 @@ June 5, 2015</small>
 
 ---
 
-### Units of Measurement
+### Units of Measure
 
 - Float, signed int
 - Compile-time checking
