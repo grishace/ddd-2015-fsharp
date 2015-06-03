@@ -56,8 +56,8 @@ June 5, 2015</small>
 #### Imperative programming
 
 - Set of statements (sequence of actions)
-- Change program state (mutable, shared)
-- Describe <i>how</i> program operates 
+- Changes in program state (mutable, shared)
+- Describes <i>how</i> program operates 
 - FORTRAN (1954), OOP - Simula 67 (1960's)
 
 ---
@@ -127,13 +127,13 @@ June 5, 2015</small>
 
 ### Metric mishap caused loss of NASA orbiter
 
->(CNN) -- NASA lost a $125 million Mars orbiter because a Lockheed Martin engineering team used English units of measurement while the agency's team used the more conventional metric system for a key spacecraft operation, according to a review finding released Thursday.
+>(CNN) -- NASA lost a $125 million Mars orbiter because a Lockheed Martin engineering team used English [imperial] units of measurement while the agency's team used the more conventional metric system for a key spacecraft operation, according to a review finding released Thursday.
 
 [CNN.com, September 30, 1999](http://www.cnn.com/TECH/space/9909/30/mars.metric.02/)
 
 ---
 
-### Units of Measure
+### Units of Measurement
 
 - Float, signed int
 - Compile-time checking
