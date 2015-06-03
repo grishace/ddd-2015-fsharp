@@ -6,9 +6,9 @@
              | i when i % 5 = 0 -> "Buzz"
              | _ -> sprintf "%d" n
   // Sequence generation with unfold:
-  // lambda function to create option 
-  // tuple of current sequence element (fb n)
-  // and the next state (n + 1)
+  // lambda function to create Option 
+  // tuple of the current sequence element (fb n)
+  // and the next state (n + 1);
   // the last parameter is the initial state (1)
   Seq.unfold (fun n -> Some((fb n), n + 1)) 1
 

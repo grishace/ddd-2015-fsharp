@@ -8,7 +8,9 @@ open System
 let main argv =
   printfn "Hello World"
   // ignore function result
-  // note: pipe operator - result from the left is passed as the last parameter to the next function
+  // note: pipe operator - result from the
+  // left is passed as the last parameter
+  // to the next function
   Console.ReadLine() |> ignore
   // return value, i.e. exit code
   0

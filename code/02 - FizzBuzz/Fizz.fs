@@ -1,12 +1,12 @@
 ﻿// module definition
 module Fizz
 
-// Define fizz function with one parameter:
+// Define the fizz function with one parameter:
 // tuple of number, boolean, and string
 let fizz (ns:int * bool * string) =
-  // decompose tuple into 3 values, but
-  // we're interested only in the first
-  // component - number
+  // decompose the tuple into 3 values,
+  // but only the first component - number -
+  // will be used
   let (n, _, _) = ns
   // divisible by 3?
   if n % 3 = 0 

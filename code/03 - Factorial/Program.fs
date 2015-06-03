@@ -1,11 +1,11 @@
-﻿// Folding sequence with *
+﻿// Folding sequence with multiplication
 let fact n = {1 .. n} |> Seq.fold (*) 1
 
 // Reducing sequence (use big ints to extend
 // calculation range)
 let fact' n:bigint = {1I .. n} |> Seq.reduce (*)
 
-// Naive recursion (exactly the same as math)
+// Naïve recursion (exactly the same as math)
 let rec f n =
   match n with
   | 0 -> 1
