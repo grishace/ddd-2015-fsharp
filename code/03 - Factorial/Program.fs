@@ -4,13 +4,13 @@ let fact' n:bigint = {1I .. n} |> Seq.reduce (*)
 
 let rec f n =
   match n with
-  | 0 | 1 -> 1
-  | _ -> n * f (n-1)
+  | 0 -> 1
+  | _ -> f (n - 1) * n
 
 let f' n =
   let rec fr n a =
     match n with
-    | 0 | 1 -> a
+    | 0 -> a
     | _ -> fr (n - 1) (a * n)
   fr n 1
 
