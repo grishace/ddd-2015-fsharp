@@ -1,6 +1,6 @@
 ﻿module Fizz
 
-let fizz ns =
+let fizz (ns:int * bool * string) =
   let (n, _, _) = ns
   if n % 3 = 0 
     then (n, true, "Fizz")
