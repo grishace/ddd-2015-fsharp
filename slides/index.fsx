@@ -164,19 +164,31 @@ June 5, 2015</small>
 
 #### On-line
 
-- F# Foundation
-- F# For Fun And Profit
-- Try F#
-- F# Cheatsheet
+- F# Foundation ([fsharp.org](http://fsharp.org))
+- F# For Fun And Profit ([fsharpforfunandprofit.com](http://fsharpforfunandprofit.com))
+- Try F# ([tryfsharp.org](http://www.tryfsharp.org))
+- F# Cheatsheet ([dungpa.github.io/fsharp-cheatsheet](http://dungpa.github.io/fsharp-cheatsheet/))
 
 ---
 
 #### Books
 
-- Real-World Functional Programming With C# and F#
-- F# Deep Dive
-- The Book of F#
-- Web F# (link from Delmer)
+<table>
+  <tr>
+    <td><a href="http://www.manning.com/petricek/"><img alt="Real-World Functional Programming With examples in F# and C#" src="./images/rwfp.jpg"/><br/>
+    <small><h4>Real-World Functional Programming With examples in F# and C#</a>
+    by Tomas Petricek with Jon Skeet</h4></small></td>
+    <td><a href="http://www.manning.com/petricek2/"><img alt="F# Deep Dives" src="./images/fsdd.jpg"/><br/>
+    <small><h4>F# Deep Dives</a>
+    edited by Tomas Petricek and Phillip Trelford</h4></small></td>
+  </tr>
+  <tr>
+    <td><a href="http://shop.oreilly.com/product/9781593275525.do"><img alt="The Book of F#" src="./images/book.jpg"/><br/>
+    <small><h4>The Book of F#</a> by Dave Fancher</h4></small></td>
+    <td><a href="http://shop.oreilly.com/product/0636920026099.do"><img alt="Building Web, Cloud, and Mobile Solutions with F#" src="./images/web.jpg"/><br/>
+    <small><h4>Building Web, Cloud, and Mobile Solutions with F#</a> by Daniel Mohl</h4></small></td>
+  </tr>
+</table>
 
 ***
 
