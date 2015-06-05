@@ -100,6 +100,12 @@ June 5, 2015</small>
 
 #### Why F#?
 
+- Conciseness
+- Convenience
+- Correctness
+- Concurrency
+- Completeness
+
 
 ***
 
