@@ -13,6 +13,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "04 - FizzBuzz (revisited)",
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "05 - Units of Measure", "05 - Units of Measure\05 - Units of Measure.fsproj", "{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "06 - Type providers", "06 - Type providers\06 - Type providers.fsproj", "{CCCF3ED8-7D89-4B52-868A-4A9A7DE8BF00}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "07 - Async", "07 - Async\07 - Async.fsproj", "{B3C2AD3F-54CD-4523-95EA-F3F83FF2A32E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8764FF7A-7594-4D73-BD4C-3A1B33FC90A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCF3ED8-7D89-4B52-868A-4A9A7DE8BF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCF3ED8-7D89-4B52-868A-4A9A7DE8BF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCF3ED8-7D89-4B52-868A-4A9A7DE8BF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCF3ED8-7D89-4B52-868A-4A9A7DE8BF00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C2AD3F-54CD-4523-95EA-F3F83FF2A32E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C2AD3F-54CD-4523-95EA-F3F83FF2A32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C2AD3F-54CD-4523-95EA-F3F83FF2A32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C2AD3F-54CD-4523-95EA-F3F83FF2A32E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
