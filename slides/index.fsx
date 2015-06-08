@@ -75,7 +75,7 @@ June 5, 2015</small>
 - Lambda calculus (1930's)
 - Math theory of functions and their evaluation
 - Basis of almost all functional programming languages today
-- $ f(x) = x^{2} + 2 \;\; \rightarrow \;\; \lambda x.x^{2} + 2 $
+- $ f(x) = x^{2} + 2 \quad \equiv \quad \lambda x.x^{2} + 2 $
 
 ' expressing computation by way of variable binding and substitution
 
@@ -121,9 +121,13 @@ June 5, 2015</small>
 
 ### Factorial
 
-![Product](./images/595efd051707fb0b8c6ad8d2776eea5e.png)
+$ {\displaystyle n!= \prod_{k=1}^{n} k} $
 
-![Recurrence](./images/a91da51a80ac8291d8dbcc4cb77c0936.png)
+
+$ n! = \begin{cases}
+1               & \quad \text{if  } n = 0,\\ 
+(n-1)! \times n & \quad \text{if  }n > 0
+\end{cases} $
 
 ***
 
