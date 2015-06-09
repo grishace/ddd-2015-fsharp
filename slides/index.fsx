@@ -211,6 +211,6 @@ $ n! = \begin{cases}
 
 #### Questions?
 
-[http://grishace.github.io/ddd-2015-fsharp](http://grishace.github.io/ddd-2015-fsharp)
+[https://github.com/grishace/ddd-2015-fsharp](https://github.com/grishace/ddd-2015-fsharp)
 
 *)
