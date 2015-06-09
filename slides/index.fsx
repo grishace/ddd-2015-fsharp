@@ -131,6 +131,11 @@ $ n! = \begin{cases}
 
 ***
 
+### Tail Recursion
+
+![Tail Recursion](./images/tailrec.png)
+
+
 ### FizzBuzz (revisited)
 
 ***
