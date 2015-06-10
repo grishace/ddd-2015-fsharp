@@ -135,6 +135,7 @@ $ n! = \begin{cases}
 
 ![Tail Recursion](./images/tailrec.png)
 
+***
 
 ### FizzBuzz (revisited)
 
