@@ -212,7 +212,7 @@ $ n! = \begin{cases}
 
 ***
 
-#### May the Fourth be with you!
+### May the Fourth be with you!
 
 ```fsharp
                   printfn "Star" |>(+)<| "Wars"
