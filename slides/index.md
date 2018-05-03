@@ -35,7 +35,8 @@ May 4, 2018</small>
 - Set of statements (sequence of actions)
 - Changes in program state (mutable, shared)
 - Describes <i>how</i> program operates 
-- FORTRAN (1954), OOP - Simula 67 (1960's)
+
+' FORTRAN (1954), OOP - Simula 67 (1960's)
 
 ---
 
@@ -45,24 +46,18 @@ May 4, 2018</small>
 - Avoids mutable state and side-effects
 - Output value depends only on input
 
----
-
-### Functional programming
-
-- Lambda calculus (1930's)
-- Math theory of functions and their evaluation
-- Basis of almost all functional programming languages today
-- $ f(x) = x^{2} + 2 \quad \equiv \quad \lambda x.x^{2} + 2 $
-
+' Lambda calculus (1930's)
+' Math theory of functions and their evaluation
+' Basis of almost all functional programming languages today
+' $ f(x) = x^{2} + 2 \quad \equiv \quad \lambda x.x^{2} + 2 $
 ' expressing computation by way of variable binding and substitution
 
-***
+
+---
 
 #### WTF#?
 
-- ML 
-- OCaml
-- F#
+ML $ \rightarrow $ OCaml $ \rightarrow $ F#
 
 ' Meta-Language 1973 impure multi-paradigm
 ' GC, imperative construcs (hybrid), type inference (no explicit types annotation)
@@ -144,6 +139,27 @@ $ n! = \begin{cases}
 
 ***
 
+### Discriminated unions
+
+
+```fsharp
+type Option<'a> =       // use a generic definition  
+   | Some of 'a         // valid value
+   | None 
+
+let validInt = Some 1
+let invalidInt = None
+
+match validInt with 
+| Some x -> printfn "the valid value is %A" x
+| None -> printfn "the value is None" 
+```
+
+' algebraic type - sum, tuple - product, hence *
+' domain modelling: type UserId = UserId of int
+
+***
+
 ### Metric mishap caused loss of NASA orbiter
 
 >(CNN) -- NASA lost a $125 million Mars orbiter because a Lockheed Martin engineering team used English [imperial] units of measurement while the agency's team used the more conventional metric system for a key spacecraft operation, according to a review finding released Thursday.
@@ -166,10 +182,6 @@ $ n! = \begin{cases}
 - SQL
 - JSON
 - App.config 
-
-***
-
-### Async
 
 ***
 
@@ -213,6 +225,7 @@ $ n! = \begin{cases}
 ***
 
 ### May the Fourth be with you!
+
 
 ```fsharp
                   printfn "Star" |>(+)<| "Wars"

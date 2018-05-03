@@ -11,7 +11,7 @@ type Stocks = CsvProvider<"YAHOO-INDEX_GSPC.csv">
 let sp500 = Stocks.Load("YAHOO-INDEX_GSPC.csv")
 
 // Visualize the stock prices
-[ for row in sp500.Rows -> row.Date, row.Open ]
+[ for row in sp500.Rows -> row.Date, row.Close ]
 |> Chart.FastLine
 // note: don't run in fsi
 |> ignore
@@ -42,7 +42,7 @@ open System
 open System.Linq
 
 type sql = SqlDataProvider< 
-              ConnectionString = @"Data Source=C:\Github\ddd-2018-fsharp\code\06 - Type providers\YAHOO-INDEX_GSPC.db;Version=3",
+              ConnectionString = @"Data Source=C:\Github\ddd-fsharp\code\06 - Type providers\YAHOO-INDEX_GSPC.db;Version=3",
               DatabaseVendor = Common.DatabaseProviderTypes.SQLITE,
               ResolutionPath = @"C:\temp\sqlite3",
               IndividualsAmount = 1000,
