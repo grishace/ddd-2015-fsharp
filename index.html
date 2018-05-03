@@ -54,6 +54,12 @@
 <div class="tip" id="fs6">type Console =<br />&#160;&#160;static member BackgroundColor : ConsoleColor with get, set<br />&#160;&#160;static member Beep : unit -&gt; unit + 1 overload<br />&#160;&#160;static member BufferHeight : int with get, set<br />&#160;&#160;static member BufferWidth : int with get, set<br />&#160;&#160;static member CapsLock : bool<br />&#160;&#160;static member Clear : unit -&gt; unit<br />&#160;&#160;static member CursorLeft : int with get, set<br />&#160;&#160;static member CursorSize : int with get, set<br />&#160;&#160;static member CursorTop : int with get, set<br />&#160;&#160;static member CursorVisible : bool with get, set<br />&#160;&#160;...<br /><br />Full name: System.Console</div>
 <div class="tip" id="fs7">Console.ReadLine() : string</div>
 <div class="tip" id="fs8">val ignore : value:&#39;T -&gt; unit<br /><br />Full name: Microsoft.FSharp.Core.Operators.ignore</div>
+<div class="tip" id="fs9">Multiple items<br />module Option<br /><br />from Microsoft.FSharp.Core<br /><br />--------------------<br />type Option&lt;&#39;a&gt; =<br />&#160;&#160;| Some of &#39;a<br />&#160;&#160;| None<br /><br />Full name: index.Option&lt;_&gt;</div>
+<div class="tip" id="fs10">union case Option.Some: &#39;a -&gt; Option&lt;&#39;a&gt;</div>
+<div class="tip" id="fs11">union case Option.None: Option&lt;&#39;a&gt;</div>
+<div class="tip" id="fs12">val validInt : Option&lt;int&gt;<br /><br />Full name: index.validInt</div>
+<div class="tip" id="fs13">val invalidInt : Option&lt;&#39;a&gt;<br /><br />Full name: index.invalidInt</div>
+<div class="tip" id="fs14">val x : int</div>
 
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
@@ -82,8 +88,10 @@ May 4, 2018</small>
 <li>Set of statements (sequence of actions)</li>
 <li>Changes in program state (mutable, shared)</li>
 <li>Describes <i>how</i> program operates</li>
-<li>FORTRAN (1954), OOP - Simula 67 (1960's)</li>
 </ul>
+<aside class="notes">
+FORTRAN (1954), OOP - Simula 67 (1960's)<br/>
+</aside>
 </section>
 <section >
 <h4>Functional programming</h4>
@@ -92,28 +100,17 @@ May 4, 2018</small>
 <li>Avoids mutable state and side-effects</li>
 <li>Output value depends only on input</li>
 </ul>
-</section>
-<section >
-<h3>Functional programming</h3>
-<ul>
-<li>Lambda calculus (1930's)</li>
-<li>Math theory of functions and their evaluation</li>
-<li>Basis of almost all functional programming languages today</li>
-<li><span class="math">\(f(x) = x^{2} + 2 \quad \equiv \quad \lambda x.x^{2} + 2\)</span></li>
-</ul>
 <aside class="notes">
+Lambda calculus (1930's)<br/>
+Math theory of functions and their evaluation<br/>
+Basis of almost all functional programming languages today<br/>
+$ f(x) = x^{2} + 2 \quad \equiv \quad \lambda x.x^{2} + 2 $<br/>
 expressing computation by way of variable binding and substitution<br/>
 </aside>
 </section>
-</section>
-<section >
 <section >
 <h4>WTF#?</h4>
-<ul>
-<li>ML</li>
-<li>OCaml</li>
-<li>F#</li>
-</ul>
+<p>ML <span class="math">\(\rightarrow\)</span> OCaml <span class="math">\(\rightarrow\)</span> F#</p>
 <aside class="notes">
 Meta-Language 1973 impure multi-paradigm<br/>
 GC, imperative construcs (hybrid), type inference (no explicit types annotation)<br/>
@@ -207,6 +204,37 @@ type inference - last expresseion returns - no explicit return (with some except
 <h3>FizzBuzz (revisited)</h3>
 </section>
 <section >
+<h3>Discriminated unions</h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span onmouseout="hideTip(event, 'fs9', 9)" onmouseover="showTip(event, 'fs9', 9)" class="t">Option</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">a</span><span class="o">&gt;</span> <span class="o">=</span>       <span class="c">// use a generic definition  </span>
+   | <span onmouseout="hideTip(event, 'fs10', 10)" onmouseover="showTip(event, 'fs10', 10)" class="p">Some</span> <span class="k">of</span> <span class="o">&#39;</span><span class="i">a</span>         <span class="c">// valid value</span>
+   | <span onmouseout="hideTip(event, 'fs11', 11)" onmouseover="showTip(event, 'fs11', 11)" class="p">None</span> 
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs12', 12)" onmouseover="showTip(event, 'fs12', 12)" class="i">validInt</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs10', 13)" onmouseover="showTip(event, 'fs10', 13)" class="p">Some</span> <span class="n">1</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 14)" onmouseover="showTip(event, 'fs13', 14)" class="i">invalidInt</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs11', 15)" onmouseover="showTip(event, 'fs11', 15)" class="p">None</span>
+
+<span class="k">match</span> <span onmouseout="hideTip(event, 'fs12', 16)" onmouseover="showTip(event, 'fs12', 16)" class="i">validInt</span> <span class="k">with</span> 
+| <span onmouseout="hideTip(event, 'fs10', 17)" onmouseover="showTip(event, 'fs10', 17)" class="p">Some</span> <span onmouseout="hideTip(event, 'fs14', 18)" onmouseover="showTip(event, 'fs14', 18)" class="i">x</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs5', 19)" onmouseover="showTip(event, 'fs5', 19)" class="f">printfn</span> <span class="s">&quot;the valid value is </span><span class="pf">%A</span><span class="s">&quot;</span> <span onmouseout="hideTip(event, 'fs14', 20)" onmouseover="showTip(event, 'fs14', 20)" class="i">x</span>
+| <span onmouseout="hideTip(event, 'fs11', 21)" onmouseover="showTip(event, 'fs11', 21)" class="p">None</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs5', 22)" onmouseover="showTip(event, 'fs5', 22)" class="f">printfn</span> <span class="s">&quot;the value is None&quot;</span> 
+</code></pre></td>
+</tr>
+</table>
+<aside class="notes">
+algebraic type - sum, tuple - product, hence *<br/>
+domain modelling: type UserId = UserId of int<br/>
+</aside>
+</section>
+<section >
 <section >
 <h3>Metric mishap caused loss of NASA orbiter</h3>
 <blockquote>
@@ -231,9 +259,6 @@ type inference - last expresseion returns - no explicit return (with some except
 <li>JSON</li>
 <li>App.config</li>
 </ul>
-</section>
-<section >
-<h3>Async</h3>
 </section>
 <section >
 <section >
@@ -275,7 +300,7 @@ type inference - last expresseion returns - no explicit return (with some except
 <h3>May the Fourth be with you!</h3>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">                  <span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="f">printfn</span> <span class="s">&quot;Star&quot;</span> <span class="o">|&gt;</span>(<span class="o">+</span>)<span class="o">&lt;|</span> <span class="s">&quot;Wars&quot;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">                  <span onmouseout="hideTip(event, 'fs5', 23)" onmouseover="showTip(event, 'fs5', 23)" class="f">printfn</span> <span class="s">&quot;Star&quot;</span> <span class="o">|&gt;</span>(<span class="o">+</span>)<span class="o">&lt;|</span> <span class="s">&quot;Wars&quot;</span>
 </code></pre></td>
 </tr>
 </table>
