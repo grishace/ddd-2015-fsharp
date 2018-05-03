@@ -207,8 +207,8 @@ $ n! = \begin{cases}
 
 #### Questions?
 
-[![https://github.com/grishace/ddd-2018-fsharp](./images/qrcode.png)](https://github.com/grishace/ddd-2018-fsharp)<br/>
-[https://github.com/grishace/ddd-2018-fsharp](https://github.com/grishace/ddd-2018-fsharp)
+[![https://github.com/grishace/ddd-fsharp](./images/qrcode.png)](https://github.com/grishace/ddd-fsharp)<br/>
+[https://github.com/grishace/ddd-fsharp](https://github.com/grishace/ddd-fsharp)
 
 ***
 
