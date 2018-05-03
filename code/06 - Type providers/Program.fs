@@ -1,6 +1,6 @@
 ﻿#if INTERACTIVE
-#r "../packages/FSharp.Data.2.2.2/lib/net40/FSharp.Data.dll"
-#load "../packages/FSharp.Charting.0.90.10/FSharp.Charting.fsx"
+#r "../packages/FSharp.Data.2.4.6/lib/net45/FSharp.Data.dll"
+#load "../packages/FSharp.Charting.0.91.1/lib/net45/FSharp.Charting.fsx"
 #endif
 
 open System
@@ -16,10 +16,12 @@ let sp500 = Stocks.Load("YAHOO-INDEX_GSPC.csv")
 // note: don't run in fsi
 |> ignore
 
-// Get last months' prices in HLOC format 
+let cutOff = DateTime(2015, 06, 02)
+
+// Get some prices in HLOC format 
 let recent = 
   [ for row in sp500.Rows do
-      if row.Date > DateTime.Now.AddDays(-30.0) then
+      if row.Date > cutOff.AddDays(-30.0) then
         yield row.Date, row.High, row.Low, row.Open, row.Close ]
   |> List.sortBy(fun x -> match x with (d, _, _, _, _) -> d)
 
@@ -32,7 +34,7 @@ Chart.Candlestick(recent).WithYAxis(Min = 2000.0, Max = 2200.0)
 // Let's load the same data from SQLite database
 
 #if INTERACTIVE
-#r "../packages/SQLProvider.0.0.9-alpha/lib/net40/FSharp.Data.SqlProvider.dll" 
+#r "../packages/SQLProvider.1.1.41/lib/net451/FSharp.Data.SqlProvider.dll " 
 #endif
 
 open FSharp.Data.Sql
@@ -40,7 +42,7 @@ open System
 open System.Linq
 
 type sql = SqlDataProvider< 
-              ConnectionString = @"Data Source=C:\Documents\Visual Studio 2013\Projects\DDD-2015-FSharp\06 - Type providers\YAHOO-INDEX_GSPC.db ;Version=3",
+              ConnectionString = @"Data Source=C:\Github\ddd-2018-fsharp\code\06 - Type providers\YAHOO-INDEX_GSPC.db;Version=3",
               DatabaseVendor = Common.DatabaseProviderTypes.SQLITE,
               ResolutionPath = @"C:\temp\sqlite3",
               IndividualsAmount = 1000,
@@ -49,14 +51,14 @@ type sql = SqlDataProvider<
 let ctx = sql.GetDataContext()
 
 // note: show intellisense
-let mattisOrderDetails =
-    query { for c in ctx.``[main].[SP500]`` do
+let mattisOrderDetails = 
+    query { for c in ctx.Main.Sp500 do
             select ( c.Date, c.Open ) }
     |> Chart.FastLine
 
 let candlestick = 
-  query { for c in ctx.``[main].[SP500]`` do
-          where (c.Date > DateTime.Now.AddDays(-30.0))
+  query { for c in ctx.Main.Sp500 do
+          where (c.Date > cutOff.AddDays(-30.0))
           sortBy c.Date
           select ( c.Date, c.High, c.Low, c.Open, c.Close ) }
 

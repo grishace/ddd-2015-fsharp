@@ -1,4 +1,4 @@
-# Denver Dev Day (June 5, 2015)
+# Denver Dev Day (May 4, 2018)
 
-[Introduction to F#](http://grishace.github.io/ddd-2015-fsharp)
+[Introduction to F#](http://grishace.github.io/ddd-2018-fsharp)
 

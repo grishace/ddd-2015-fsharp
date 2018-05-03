@@ -9,10 +9,12 @@
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-let gitOwner = "grishace"
+let gitOwner = "myGitUser"
 let gitHome = "https://github.com/" + gitOwner
 // The name of the project on GitHub
-let gitProjectName = "ddd-2015-fsharp"
+let gitProjectName = "MyProject"
+// The name of the GitHub repo subdirectory to publish slides to
+let gitSubDir = ""
 
 open FsReveal
 open Fake
@@ -22,15 +24,16 @@ open System.Diagnostics
 open Suave
 open Suave.Web
 open Suave.Http
-open Suave.Http.Files
+open Suave.Operators
 open Suave.Sockets
 open Suave.Sockets.Control
 open Suave.Sockets.AsyncSocket
 open Suave.WebSocket
 open Suave.Utils
+open Suave.Files
 
-let outDir = __SOURCE_DIRECTORY__ @@ "output"
-let slidesDir = __SOURCE_DIRECTORY__ @@ "slides"
+let outDir = __SOURCE_DIRECTORY__ </> "output"
+let slidesDir = __SOURCE_DIRECTORY__ </> "slides"
 
 Target "Clean" (fun _ ->
     CleanDirs [outDir]
@@ -44,15 +47,15 @@ let fsiEvaluator =
 
 let copyStylesheet() =
     try
-        CopyFile (outDir @@ "css" @@ "custom.css") (slidesDir @@ "custom.css")
+        CopyFile (outDir </> "css" </> "custom.css") (slidesDir </> "custom.css")
     with
     | exn -> traceImportant <| sprintf "Could not copy stylesheet: %s" exn.Message
 
 let copyPics() =
     try
-      CopyDir (outDir @@ "images") (slidesDir @@ "images") (fun f -> true)
+      CopyDir (outDir </> "images") (slidesDir </> "images") (fun f -> true)
     with
-    | exn -> traceImportant <| sprintf "Could not copy picture: %s" exn.Message    
+    | exn -> traceImportant <| sprintf "Could not copy picture: %s" exn.Message
 
 let generateFor (file:FileInfo) = 
     try
@@ -90,12 +93,13 @@ let socketHandler (webSocket : WebSocket) =
       let! refreshed =
         Control.Async.AwaitEvent(refreshEvent.Publish)
         |> Suave.Sockets.SocketOp.ofAsync 
-      do! webSocket.send Text (UTF8.bytes "refreshed") true
+      do! webSocket.send Text (ASCII.bytes "refreshed") true
   }
 
 let startWebServer () =
     let rec findPort port =
         let portIsTaken =
+            if isMono then false else
             System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners()
             |> Seq.exists (fun x -> x.Port = port)
 
@@ -106,29 +110,27 @@ let startWebServer () =
     let serverConfig = 
         { defaultConfig with
            homeFolder = Some (FullName outDir)
-           bindings = [ Types.HttpBinding.mk' Types.HTTP "127.0.0.1" port ]
+           bindings = [ HttpBinding.mkSimple HTTP "127.0.0.1" port ]
         }
     let app =
       choose [
-        Applicatives.path "/websocket" >>= handShake socketHandler
+        Filters.path "/websocket" >=> handShake socketHandler
         Writers.setHeader "Cache-Control" "no-cache, no-store, must-revalidate"
-        >>= Writers.setHeader "Pragma" "no-cache"
-        >>= Writers.setHeader "Expires" "0"
-        >>= browseHome ]
+        >=> Writers.setHeader "Pragma" "no-cache"
+        >=> Writers.setHeader "Expires" "0"
+        >=> browseHome ]
     startWebServerAsync serverConfig app |> snd |> Async.Start
     Process.Start (sprintf "http://localhost:%d/index.html" port) |> ignore
 
 Target "GenerateSlides" (fun _ ->
-    !! (slidesDir @@ "*.md")
-      ++ (slidesDir @@ "*.fsx")
+    !! (slidesDir + "/**/*.md")
+      ++ (slidesDir + "/**/*.fsx")
     |> Seq.map fileInfo
     |> Seq.iter generateFor
 )
 
-Target "KeepRunning" (fun _ ->    
-    use watcher = !! (slidesDir + "/**/*.*") |> WatchChanges (fun changes ->
-         handleWatcherEvents changes
-    )
+Target "KeepRunning" (fun _ ->
+    use watcher = !! (slidesDir + "/**/*.*") |> WatchChanges handleWatcherEvents
     
     startWebServer ()
 
@@ -142,15 +144,16 @@ Target "KeepRunning" (fun _ ->
 Target "ReleaseSlides" (fun _ ->
     if gitOwner = "myGitUser" || gitProjectName = "MyProject" then
         failwith "You need to specify the gitOwner and gitProjectName in build.fsx"
-    let tempDocsDir = __SOURCE_DIRECTORY__ @@ "temp/gh-pages"
-    CleanDir tempDocsDir
-    Repository.cloneSingleBranch "" (gitHome + "/" + gitProjectName + ".git") "gh-pages" tempDocsDir
+    let tempDocsRoot = __SOURCE_DIRECTORY__ </> "temp/gh-pages"
+    let tempDocsDir = tempDocsRoot </> gitSubDir
+    CleanDir tempDocsRoot
+    Repository.cloneSingleBranch "" (gitHome + "/" + gitProjectName + ".git") "gh-pages" tempDocsRoot
 
     fullclean tempDocsDir
     CopyRecursive outDir tempDocsDir true |> tracefn "%A"
-    StageAll tempDocsDir
-    Git.Commit.Commit tempDocsDir "Update generated slides"
-    Branches.push tempDocsDir
+    StageAll tempDocsRoot
+    Git.Commit.Commit tempDocsRoot "Update generated slides"
+    Branches.push tempDocsRoot
 )
 
 "Clean"
