@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Introduction to F#</title>
-    <meta name="description" content="Introduction to F#. Denver Dev Day (June 5, 2015)">
+    <meta name="description" content="Introduction to F#. Denver Dev Day (May 4, 2018)">
     <meta name="author" content="Grigoriy Belenkiy">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -38,7 +38,7 @@
     <script language="javascript" type="text/javascript">
         function init()
         {
-            websocket = new WebSocket("ws://localhost:8083/websocket");
+            websocket = new WebSocket("ws://"+window.location.host+"/websocket");
             websocket.onmessage = function(evt) { location.reload(); };
         }
         window.addEventListener("load", init, false);
@@ -46,144 +46,83 @@
 </head>
 <body>
     <div class="reveal">
-        
+        <div class="tip" id="fs1">namespace System</div>
+<div class="tip" id="fs2">Multiple items<br />type EntryPointAttribute =<br />&#160;&#160;inherit Attribute<br />&#160;&#160;new : unit -&gt; EntryPointAttribute<br /><br />Full name: Microsoft.FSharp.Core.EntryPointAttribute<br /><br />--------------------<br />new : unit -&gt; EntryPointAttribute</div>
+<div class="tip" id="fs3">val main : argv:string [] -&gt; int<br /><br />Full name: index.main</div>
+<div class="tip" id="fs4">val argv : string []</div>
+<div class="tip" id="fs5">val printfn : format:Printf.TextWriterFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.printfn</div>
+<div class="tip" id="fs6">type Console =<br />&#160;&#160;static member BackgroundColor : ConsoleColor with get, set<br />&#160;&#160;static member Beep : unit -&gt; unit + 1 overload<br />&#160;&#160;static member BufferHeight : int with get, set<br />&#160;&#160;static member BufferWidth : int with get, set<br />&#160;&#160;static member CapsLock : bool<br />&#160;&#160;static member Clear : unit -&gt; unit<br />&#160;&#160;static member CursorLeft : int with get, set<br />&#160;&#160;static member CursorSize : int with get, set<br />&#160;&#160;static member CursorTop : int with get, set<br />&#160;&#160;static member CursorVisible : bool with get, set<br />&#160;&#160;...<br /><br />Full name: System.Console</div>
+<div class="tip" id="fs7">Console.ReadLine() : string</div>
+<div class="tip" id="fs8">val ignore : value:&#39;T -&gt; unit<br /><br />Full name: Microsoft.FSharp.Core.Operators.ignore</div>
+
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
-            <section data-background="images/sponsors.png" data-background-transition="none">
-
+            <section data-background="images/20180504DDDWelcome.png" data-background-transition="none">
 <aside class="notes">
 Sponsors slide (required by organizators)<br/>
 </aside>
-
 </section>
-
 <section >
-
 <h3>Introduction to F#</h3>
-
-<p><img src="./images/keepcalmfsharp.jpg" alt="KeepCalm" /></p>
-
+<p><img src="./images/I_Heart_Fsharp_Square_Black_1000x800_preview.png" alt="F# |&gt; I &lt;3" /></p>
 <small>Grigoriy Belenkiy<br/>
-Software engineer, McGraw Hill Financial
+Software developer, S&amp;P Global Market Intelligence
 <br/>
 <br/>
 Denver Dev Day<br/>
-June 5, 2015</small>
-
+May 4, 2018</small>
 </section>
-
 <section >
-
-<h3>Agenda</h3>
-
-<ul>
-<li>Why F#?</li>
-<li>Basics</li>
-<li>Advanced features</li>
-<li>More...</li>
-</ul>
-
-</section>
-
 <section >
-
+<h3>Imperative vs Functional</h3>
+</section>
 <section >
-
-<h3>Programming Paradigms</h3>
-
-<ul>
-<li>Logic</li>
-<li>Imperative</li>
-<li>Functional</li>
-</ul>
-
-</section>
-
-<section author="Grigoriy Belenkiy" description="Introduction to F#. Denver Dev Day (June 5, 2015)" theme="simple" title="Introduction to F#" transition="convex">
-
-<h4>Logic programming</h4>
-
-<ul>
-<li>Set of sentences (predicates)</li>
-<li>Describe <i>rules</i> of problem domain</li>
-<li>Prolog (1972)</li>
-</ul>
-
-</section>
-
-<section author="Grigoriy Belenkiy" description="Introduction to F#. Denver Dev Day (June 5, 2015)" theme="simple" title="Introduction to F#" transition="convex">
-
 <h4>Imperative programming</h4>
-
 <ul>
 <li>Set of statements (sequence of actions)</li>
 <li>Changes in program state (mutable, shared)</li>
 <li>Describes <i>how</i> program operates</li>
 <li>FORTRAN (1954), OOP - Simula 67 (1960's)</li>
 </ul>
-
 </section>
-
-<section author="Grigoriy Belenkiy" description="Introduction to F#. Denver Dev Day (June 5, 2015)" theme="simple" title="Introduction to F#" transition="convex">
-
+<section >
 <h4>Functional programming</h4>
-
 <ul>
 <li>Evaluation of mathematical functions</li>
 <li>Avoids mutable state and side-effects</li>
 <li>Output value depends only on input</li>
 </ul>
-
 </section>
-
-</section>
-
 <section >
-
-<section >
-
 <h3>Functional programming</h3>
-
 <ul>
 <li>Lambda calculus (1930's)</li>
 <li>Math theory of functions and their evaluation</li>
 <li>Basis of almost all functional programming languages today</li>
 <li><span class="math">\(f(x) = x^{2} + 2 \quad \equiv \quad \lambda x.x^{2} + 2\)</span></li>
 </ul>
-
 <aside class="notes">
 expressing computation by way of variable binding and substitution<br/>
 </aside>
-
 </section>
-
-<section author="Grigoriy Belenkiy" description="Introduction to F#. Denver Dev Day (June 5, 2015)" theme="simple" title="Introduction to F#" transition="convex">
-
-<h4>Functional languages</h4>
-
+</section>
+<section >
+<section >
+<h4>WTF#?</h4>
 <ul>
-<li>LISP (1958)</li>
-<li>ML (1973); "impure", multi-paradigm</li>
-<li>Erlang (1986)</li>
-<li>Haskell (1990)</li>
-<li>Scala (2003)</li>
-<li>F# (2005)</li>
+<li>ML</li>
+<li>OCaml</li>
+<li>F#</li>
 </ul>
-
 <aside class="notes">
-ML - first-class functions (explain), automatic memory management through garbage collection, type inference, pattern matching, and exception handling<br/>
-Erlang - Ericsson, network hardware, actors concurrency<br/>
-Haskell - math putity<br/>
-Scala - JVM, "better Java"<br/>
-F# .NET, part of VS2010, Current version 3.1 (2014), 4.0 this year<br/>
+Meta-Language 1973 impure multi-paradigm<br/>
+GC, imperative construcs (hybrid), type inference (no explicit types annotation)<br/>
+OCaml - extended with OO constructs 1996<br/>
+F# MS Research 2005, last version 4.1 2017<br/>
 </aside>
-
 </section>
-
-<section author="Grigoriy Belenkiy" description="Introduction to F#. Denver Dev Day (June 5, 2015)" theme="simple" title="Introduction to F#" transition="convex">
-
+<section >
 <h4>Why F#?</h4>
-
 <ul>
 <li>Conciseness</li>
 <li>Convenience</li>
@@ -191,132 +130,124 @@ F# .NET, part of VS2010, Current version 3.1 (2014), 4.0 this year<br/>
 <li>Concurrency</li>
 <li>Completeness</li>
 </ul>
-
+<aside class="notes">
+Conciseness - no clutter, simple syntax<br/>
+Convenience - simpler patterns, hash code, equality methods are autogenerated<br/>
+Correctness - powerful type system, type inference, immutability by default, option (remove NRE)<br/>
+Concurrency - async model (moved to C#), actor system out of the box<br/>
+Completeness - .NET, everything C# can do, libraries reuse, .NET Core - runs on Mac & Linux<br/>
+</aside>
 </section>
-
 </section>
-
 <section >
-
 <h3>Hello World</h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// using namespace</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">System</span>
 
+<span class="c">// entry point attribute for console app</span>
+[&lt;<span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="t">EntryPoint</span>&gt;]
+<span class="c">// main function</span>
+<span class="c">// note: no args type</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="f">main</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">argv</span> <span class="o">=</span>
+  <span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="f">printfn</span> <span class="s">&quot;Hello World&quot;</span>
+  <span class="c">// ignore function result</span>
+  <span class="c">// note: pipe operator - result from the</span>
+  <span class="c">// left is passed as the last parameter</span>
+  <span class="c">// to the next function</span>
+  <span onmouseout="hideTip(event, 'fs6', 6)" onmouseover="showTip(event, 'fs6', 6)" class="t">Console</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 7)" onmouseover="showTip(event, 'fs7', 7)" class="f">ReadLine</span>() <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs8', 8)" onmouseover="showTip(event, 'fs8', 8)" class="f">ignore</span>
+  <span class="c">// return value, i.e. exit code</span>
+  <span class="n">0</span>
+</code></pre></td>
+</tr>
+</table>
+<aside class="notes">
+let (values binding) / call vs evaluate <br/>
+whitespace significance<br/>
+tabs vs spaces - no tabs - no war<br/>
+type inference - last expresseion returns - no explicit return (with some exceptions)<br/>
+|> - inverts "call-flow" in the source code<br/>
+</aside>
 </section>
-
 <section >
-
 <h3>FizzBuzz</h3>
-
 <blockquote>
-  <p>Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.</p>
+<p>Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.</p>
 </blockquote>
-
 </section>
-
 <section >
-
 <h3>Factorial</h3>
-
 <p><span class="math">\({\displaystyle n!= \prod_{k=1}^{n} k}\)</span></p>
-
 <p><span class="math">\(n! = \begin{cases}
-1               &amp; \quad \text{if  } n = 0,\\ 
+1               &amp; \quad \text{if  } n = 0,\\
 (n-1)! \times n &amp; \quad \text{if  }n &gt; 0
 \end{cases}\)</span></p>
-
 </section>
-
 <section >
-
 <h3>Tail Recursion</h3>
-
 <p><img src="./images/tailrec.png" alt="Tail Recursion" /></p>
-
 </section>
-
 <section >
-
 <h3>FizzBuzz (revisited)</h3>
-
 </section>
-
 <section >
-
 <section >
-
 <h3>Metric mishap caused loss of NASA orbiter</h3>
-
 <blockquote>
-  <p>(CNN) -- NASA lost a $125 million Mars orbiter because a Lockheed Martin engineering team used English [imperial] units of measurement while the agency's team used the more conventional metric system for a key spacecraft operation, according to a review finding released Thursday.</p>
+<p>(CNN) -- NASA lost a $125 million Mars orbiter because a Lockheed Martin engineering team used English [imperial] units of measurement while the agency's team used the more conventional metric system for a key spacecraft operation, according to a review finding released Thursday.</p>
 </blockquote>
-
 <p><a href="http://www.cnn.com/TECH/space/9909/30/mars.metric.02/">CNN.com, September 30, 1999</a></p>
-
 </section>
-
-<section author="Grigoriy Belenkiy" description="Introduction to F#. Denver Dev Day (June 5, 2015)" theme="simple" title="Introduction to F#" transition="convex">
-
+<section >
 <h3>Units of Measure</h3>
-
 <ul>
 <li>Float, signed int</li>
 <li>Compile-time checking</li>
 <li>Length, volume, mass, and so on... <span class="fragment"> temperature?</span></li>
 </ul>
-
 </section>
-
 </section>
-
 <section >
-
 <h3>Type providers</h3>
-
 <ul>
 <li>CSV</li>
 <li>SQL</li>
-<li>More...</li>
+<li>JSON</li>
+<li>App.config</li>
 </ul>
-
 </section>
-
 <section >
-
 <h3>Async</h3>
-
 </section>
-
 <section >
-
-<h3>GUI</h3>
-
-<ul>
-<li>WinForms</li>
-<li>WPF</li>
-</ul>
-
-</section>
-
 <section >
-
-<section >
-
 <h3>Resources</h3>
-
 <h4>On-line</h4>
-
 <ul>
 <li>F# Foundation (<a href="http://fsharp.org">fsharp.org</a>)</li>
 <li>F# For Fun And Profit (<a href="http://fsharpforfunandprofit.com">fsharpforfunandprofit.com</a>)</li>
 <li>Try F# (<a href="http://www.tryfsharp.org">tryfsharp.org</a>)</li>
 <li>F# Cheatsheet (<a href="http://dungpa.github.io/fsharp-cheatsheet/">dungpa.github.io/fsharp-cheatsheet</a>)</li>
 </ul>
-
 </section>
-
-<section author="Grigoriy Belenkiy" description="Introduction to F#. Denver Dev Day (June 5, 2015)" theme="simple" title="Introduction to F#" transition="convex">
-
+<section >
 <h4>Books</h4>
-
 <table>
   <tr>
     <td><a href="http://www.manning.com/petricek/"><img alt="Real-World Functional Programming With examples in F# and C#" src="./images/rwfp.jpg"/><br/>
@@ -327,27 +258,28 @@ F# .NET, part of VS2010, Current version 3.1 (2014), 4.0 this year<br/>
     edited by Tomas Petricek and Phillip Trelford</h4></small></td>
   </tr>
   <tr>
-    <td><a href="http://shop.oreilly.com/product/9781593275525.do"><img alt="The Book of F#" src="./images/book.jpg"/><br/>
-    <small><h4>The Book of F#</a> by Dave Fancher</h4></small></td>
-    <td><a href="http://shop.oreilly.com/product/0636920026099.do"><img alt="Building Web, Cloud, and Mobile Solutions with F#" src="./images/web.jpg"/><br/>
-    <small><h4>Building Web, Cloud, and Mobile Solutions with F#</a> by Daniel Mohl</h4></small></td>
+    <td><a href="https://www.amazon.com/Expert-F-4-0-Don-Syme/dp/1484207416/"><img alt="Expert F# 4.0" src="./images/exfs.jpg"/><br/>
+    <small><h4>Expert F# 4.0</a> by Don Syme‎, Adam Granicz,‎ Antonio Cisternino</h4></small></td>
+    <td><a href="https://www.amazon.com/Mastering-F-Alfonso-Garcia-Caro-Nunez/dp/1784393436/"><img alt="Mastering F#" src="./images/mfs.jpg"/><br/>
+    <small><h4>Mastering F#</a> by Alfonso Garcia-Caro Nunez,‎ Suhaib Fahad</h4></small></td>
   </tr>
 </table>
-
 </section>
-
 </section>
-
 <section >
-
-<h3>That's all!</h3>
-
 <h4>Questions?</h4>
-
-<p><a href="https://github.com/grishace/ddd-2015-fsharp"><a href="https://github.com/grishace/ddd-2015-fsharp">https://github.com/grishace/ddd-2015-fsharp</a></a></p>
-
+<p><a href="https://github.com/grishace/ddd-2018-fsharp"><img src="./images/qrcode.png" alt="https://github.com/grishace/ddd-2018-fsharp" /></a><br/>
+<a href="https://github.com/grishace/ddd-2018-fsharp"><a href="https://github.com/grishace/ddd-2018-fsharp">https://github.com/grishace/ddd-2018-fsharp</a></a></p>
 </section>
-
+<section >
+<h4>May the Fourth be with you!</h4>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">                  <span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="f">printfn</span> <span class="s">&quot;Star&quot;</span> <span class="o">|&gt;</span>(<span class="o">+</span>)<span class="o">&lt;|</span> <span class="s">&quot;Wars&quot;</span>
+</code></pre></td>
+</tr>
+</table>
+</section>
 
 
         </div>
